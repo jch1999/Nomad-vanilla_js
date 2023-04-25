@@ -1,18 +1,3 @@
-const a = 10;
-const b = 2;
-let myName = "chanho";
-
-console.log(a + b);
-console.log(a * b);
-console.log(a / b);
-console.log("Hello " + myName);
-
-myName = "jch";
-
-console.log("Your new name is " + myName);
-var c = 6;
-var d = 3;
-console.log(c + d);
-c += 2;
-console.log(c * d);
-console.log(c / d);
+const amIFat=null;//null 비어있음을 의미하는 값이다. 비어진채로 채워진다. 비어있음을 의미하는 값으로 공간을 채운다.
+let smoeting;//undefined 공간은 존재하나 값이 없다.
+console.log(smoeting, amIFat);
