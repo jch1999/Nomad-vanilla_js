@@ -1,38 +1,20 @@
-const Calculator = {
-  Add: function(a, b) {
-    return (a + b);
-  },
-  Sub: function(a, b) {
-    return (a - b);
-  },
-  Div: function(a, b) {
-    return (a / b);
-  },
-  Mul: function(a, b) {
-    return (a * b);
-  },
-  Power: function(a, b) {
-    return (a ** b);
-  },
-};
+const age=parseInt(prompt("How old are ypu?"));
+// console.log(isNaN(age));
 
-// Calculator.Add(5, 5);
-// Calculator.Sub(5, 5);
-// Calculator.Mul(5, 5);
-// Calculator.Div(5, 5);
-// Calculator.Power(5, 5);
-// console.log(Calculator.Add(2, 3));
-
-// const age = 96;
-// function calculateKrAge(ageOfForeigner) {
-//   //return ageOfForeigner + 2
-//   return "hello";
+// if(condition){
+//     //conditino == true
+// } else {
+//   //condition == false
 // }
-// const krAge = calculateKrAge(age)
-// console.log(krAge);
 
-const plusResult = Calculator.Add(2, 3);
-const minusResult = Calculator.Sub(plusResult, 10);
-const timesResult = Calculator.Mul(10, minusResult);
-const divideResult = Calculator.Div(timesResult, plusResult);
-const powerResult = Calculator.Power(divideResult, minusResult);
+if(isNaN(age)||age<0) {
+  console.log("Please write a real positive number");
+}else if(age<18) {
+  console.log("You are too young.")
+}else if(age>=18&&age<=50) {
+  console.log("You can drink.");
+}else if(age>50&&age<=80){
+  console.log("You should exercise.");
+}else if(age>=80){
+  console.log("You can do whateveryou want.");
+}
