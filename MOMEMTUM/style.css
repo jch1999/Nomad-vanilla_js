@@ -1,3 +1,11 @@
 body{
   background-color: beige;
 }
+
+h1{
+  color:#6495ed;
+  transiction:color.5s ease-in-out;
+}
+.clicked{
+  color:tomato;
+}
