@@ -10,10 +10,15 @@
 </head>
 
 <body>
-  <div id="login-form">
-    <input type="text" placeholder="What is your name?" /> 
-    <button>Log In</button>
-  </div>
+  <form id="login-form">
+    <!--input은 form 안에 있어야 한다.  -->
+    <!-- input 안에 있는 button을 누르거나 type이 submit인 input을 클릭하면 작성한 form이 submit된다.-->
+    <!-- form 안에서 엔터를 누르고 input이 더 존재하지 않으면 submit하는 규칙이 있다. 
+    또 form 안에 있는 버튼을 눌렀을 때도 form이 자동으로submit된다.-->
+    <input required maxlength="15" type="text" placeholder="What is your name?" />
+    <!-- <button>Log In</button> -->
+    <input type="submit" value="Log In" />
+  </form>
   <script src="app.js"></script>
 </body>
 
