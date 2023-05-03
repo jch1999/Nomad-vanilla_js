@@ -1,25 +1,36 @@
 const loginForm = document.querySelector("#login-form");
 const loginInput = loginForm.querySelector("#login-form input");
 
+//링크(a)의 기본동작은 다른페이지로의 이동이다. 그것을 막아보자
+const link=document.querySelector("a");
+
 function onLoginSubmit(event) {
-    //form의 기본 동작을 막아라
-    //브라우저는 form을 submit할 경우 기보적으로 페이지를 새로고침하도록 되어 있다.
     event.preventDefault();
     const username = loginInput.value;
     console.log(username);
     console.log(event);
 }
 
+function handleLinkClick(event){
+    event.preventDefault();
+    console.dir(event);
+    console.dir(event.composedPath());
+    alert("clicke");//alert는 특이하게 호출되면 다른 모든 동작을 일시정지시킨다.
+    //그래서 아무도 안쓴다고 한다
+}
+
 loginForm.addEventListener("submit",onLoginSubmit);
 
-//이벤트 리스너를 추가했을 때
-//이벤트가 발생하면 브라우저가 function을 실행시키기는 하지만
-//브라우저는 함수에 정보를 주고있다.
-//onLoginsubmit(infomation)
-//브라우저는 브라우저 내에서 event로부터 정보를 잡아내서
-//onLoginsubmit() 실행 버튼을 누른다
-//매개변수가 비어있는채로가 아닌 추가적인 정보를 자긴 채로 호출하게 한다.
-//첫번째 매개변수로 주어진다.
+link.addEventListener("click",handleLinkClick);
 
-//모든 EventListenr function의 첫번째 argument는 항상
-//방금 발생한 이벤트의 정보가 된다.
+//이벤트 리스너의 함수는 프로그래머가 실행시키는 것이 아닌 js가 실행시키는 것이다.
+//우리는 js에게 함수의 이름만 주고 실행하는 것은 js의 몫이다.
+//그러나 가끔은 그 실행을 멈춰야 할 때가 있다.
+//뭐가 클릭됐는지 어디가 클릭됐는지 등 정보를 알고 싶을 때이다.
+
+//js는 단지 함수를 실행시키기만 하는 것이 아닌,
+//js는 함수를 실행시키는 동시에 그 함수의 첫 번째 인자로 object를 넣어 준다.
+//그리고 이 object에는 방금 일어난 event에 대한 여러 정보가 담겨있다.
+//handleLinkClick({information about the event that just happend})
+//이건 js가 우리에게 공짜로 주는 것이다.
+//우리가 할 것은 받아들일 공간(매개변수)을 만드는 것이다.
