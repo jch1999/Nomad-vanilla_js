@@ -1,28 +1,21 @@
 const toDoForm = document.getElementById("todo-form");
-// const toDoInput = document.querySelector("#todo-form input");
 const toDoInput = toDoForm.querySelector("input");
 const toDoList = document.getElementById("todo-list");
+
+const TODOS_KEY="toDos";
 
 const toDos=[];
 
 function saveToDos(){
-  // localStorage.setItem("toDos",toDos);
   localStorage.setItem("toDos",JSON.stringify(toDos));
 }
 
 function deleteToDo(event){
-  // console.log(event.target.parentElement);
-  // console.dir(event.target.parentElement.innerText);
-  // console.log(event.composedPath());
-  
-  // document.removeChild(event.);
-
   const li=event.target.parentElement;
   li.remove();
 }
 
 function paintToDo(newToDo){
-  // console.log("I will paint "+newToDo);
   const li=document.createElement("li");
   const span=document.createElement("span");
   span.innerText=newToDo;
@@ -31,19 +24,28 @@ function paintToDo(newToDo){
   button.addEventListener("click",deleteToDo);
   li.appendChild(span);
   li.appendChild(button);
-  // console.log(li);
+
   toDoList.appendChild(li);
 }
 function handleToDoSubmit(event) {
   event.preventDefault();
-  // console.log(toDoInput.value);
   const newToDo = toDoInput.value;
-  // console.log(newToDo);
   toDoInput.value = "";
-  // console.log(newToDo);
   toDos.push(newToDo);
   paintToDo(newToDo);
   saveToDos();
 }
 
 toDoForm.addEventListener("submit", handleToDoSubmit);
+
+function sayHello(item){
+  console.log("this is turn of a "+item);
+}
+const savedToDos=localStorage.getItem(TODOS_KEY);
+console.log(savedToDos);
+if(savedToDos){
+  const parsedToDos=JSON.parse(savedToDos);
+  // console.log(parsedToDos);
+  parsedToDos.forEach(sayHello);//함수에 각 요소 전달함.
+  // parsedToDos.forEach((item)=>console.log("this is turn of a "+item));//람다식?
+}
