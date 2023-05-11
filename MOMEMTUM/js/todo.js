@@ -12,6 +12,9 @@ function saveToDos() {
 
 function deleteToDo(event) {
   const li = event.target.parentElement;
+  toDos=toDos.filter(toDo=>toDo.id!=parseInt(li.id));
+  saveToDos();
+  console.log(typeof li.id);
   li.remove();
 }
 
@@ -49,7 +52,7 @@ function sayHello(item) {
 }
 
 const savedToDos = localStorage.getItem(TODOS_KEY);
-console.log(savedToDos);
+// console.log(savedToDos);
 if (savedToDos) {
   const parsedToDos = JSON.parse(savedToDos);
   // parsedToDos.forEach(sayHello);//함수에 각 요소 전달함.
@@ -57,3 +60,14 @@ if (savedToDos) {
   toDos = parsedToDos;
   parsedToDos.forEach(paintToDo);
 }
+
+//filter
+//arrays에서 요소를 삭제할 때, 실제로 요소를 지우는 것이 아니다. 
+//진짜로 일어나는 일은 지우려는 요소(item)을 빼고 새로운 array를 만드는 것이다.
+//즉, item을 지우는 것이 아닌 item을 제외하는 것이다.
+// .filter함수를 사용하면 된다.
+
+// array.filter(filterFunction) 
+// filterFunctinon에 array의 각 요소를 전달.
+// 반환값이 true면 새 array에 포함.
+// 반환값이 false면 미포함.
